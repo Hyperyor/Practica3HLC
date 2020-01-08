@@ -12,10 +12,16 @@
     {
         if($palabraOculta[$i] == $letra)
         {
-            $_SESSION['palabraVacia'][$i] = $letra;
-            $_SESSION['letrasAcertadas'] += 1;
             $existe = 1;
+
+            if($_SESSION['palabraVacia'][$i] != $letra)
+            {
+                $_SESSION['palabraVacia'][$i] = $letra;
+                $_SESSION['letrasAcertadas'] += 1;
+                
+            }
         }
+        
     }
 
     if($existe == 0)
@@ -24,12 +30,14 @@
 
         if($_SESSION['fallos'] == 8)
         {
+            $_SESSION["derrotasUsu"] = $_SESSION["derrotasUsu"] + 1;
             $_SESSION['derrota'] = true;
         }
     }
 
     if($_SESSION['letrasAcertadas'] == strlen($_SESSION['palabraVacia']))
     {
+        $_SESSION["victoriasUsu"] = $_SESSION["victoriasUsu"] + 1;
         $_SESSION['victoria'] = true;
     }
 

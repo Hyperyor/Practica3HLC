@@ -3,7 +3,8 @@
     
     session_start();
 
-    $user = $_SESSION['user_id'] = $_GET['usuario'];
+    //rellenamos la sesion con variables que usaremos 
+    $user = $_SESSION['user_id'] = $_GET['email'];
 
     $_SESSION['fallos'] = 0;
 
@@ -11,8 +12,30 @@
     $_SESSION['derrota'] = false;
 
     $_SESSION['letrasAcertadas'] = 0;
-    //echo "<script>alert('Usuario: $user');</script>";
+    
+    
+    $query = "SELECT nombre, apellido, email, fecha_nacimiento, victorias, derrotas from usuario where email = ?";
 
+    $stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
+    $stmt->bind_param('s', $user);
+    $stmt->execute();
+
+    $resultado = $stmt->get_result();
+
+    if($resultado->num_rows < 1){
+        echo "sin valores"; 
+    }else{
+        //cargamos los datos del usuario en la sesion
+        while($fila = $resultado->fetch_assoc()){
+        $_SESSION['nombreUsuario'] = $fila["nombre"];
+        $_SESSION['apellidoUsuario'] = $fila["apellido"];
+        $_SESSION['victoriasUsu'] = $fila["victorias"];
+        $_SESSION['fechaNacUsuario'] = $fila["fecha_nacimiento"];
+        $_SESSION['derrotasUsu'] = $fila["derrotas"];
+        }
+    }
+
+    $stmt->close();
 
     //tomamos las palabras de la base de datos
     $records = $conexion->query('SELECT palabra FROM palabras');
