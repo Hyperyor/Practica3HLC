@@ -21,7 +21,9 @@
 		$stmt->execute();
 		$stmt->close();
 
-		echo "<script>alert('Alta de usuario correcta');</script>";
+		//echo "<script>alert('Alta de usuario correcta');</script>";
+
+		header("Location: indice.php");
 
 
 	}
@@ -31,6 +33,8 @@
 		{
 			echo "<script>alert('Error, el nombre, el email y la fecha de nacimiento son obligatorios');</script>";
 		}
+
+	
 		
 	}
 
@@ -45,13 +49,19 @@
   </head>
   <body>
 
+	<a href="indice.php">Volver al inicio</a>
+
     <h1>SignUp</h1>
 
     <form action="signup.php" method="POST" >
-      <input name="nombre" type="text" placeholder="Introduzca su nombre">
-      <input name="apellido" type="text" placeholder="Introduzca su apellido">
-      <input name="email" type="email" placeholder="Introduzca su email">
-	  <input name="fecha_nacimiento" type="date"/>
+	  <p>Nombre</p>
+      <input name="nombre" type="text" placeholder="Introduzca su nombre" value=<? echo '"' . $_POST['nombre'] . '"' ?>>
+	  <p>Apellido</p>
+      <input name="apellido" type="text" placeholder="Introduzca su apellido" value=<? echo '"' . $_POST['apellido'] . '"' ?>>
+	  <p>Email</p>
+      <input name="email" type="email" placeholder="Introduzca su email" value=<? echo '"' . $_POST['email'] . '"' ?>>
+      <p>Fecha de nacimiento</p>
+	  <input name="fecha_nacimiento" type="date" value=<? echo '"' . $_POST['fecha_nacimiento'] . '"' ?>/>
 						
       <input name="envio" type="submit" value="Submit">
     </form>

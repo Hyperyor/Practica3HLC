@@ -11,7 +11,7 @@ try {
   die('Connection Failed: ' . $e->getMessage());
 }*/
 
-$servidor="172.20.0.2";
+$servidor="172.25.0.2";
 $usuario="root";
 $pass="1234";
 $base_datos="db";

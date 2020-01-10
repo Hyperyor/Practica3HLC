@@ -1,5 +1,5 @@
 <?php
-  session_start();
+/*  session_start();
 
   require 'database.php';
 
@@ -14,19 +14,18 @@
     if (count($results) > 0) {
       $user = $results;
     }
-  }
+  }*/
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Welcome to you WebApp</title>
+    <title>Inicio</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!--<link rel="stylesheet" href="assets/css/style.css"> -->
   </head>
   <body>
-    <?php require 'header.php' ?>
 
     <?php if(!empty($user)): ?>
       <br> Welcome. <?= $user['email']; ?>
@@ -37,7 +36,6 @@
     <?php else: ?>
       <h1>Please Login or SignUp</h1>
 
-      <a href="login.php">Login</a> or
       <a href="signup.php">SignUp</a>
     <?php endif; ?>
   </body>
