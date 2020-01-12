@@ -1,11 +1,9 @@
 <?php
-
 	require 'database.php';
 
-	
+	session_start();
 
 	if (!empty($_POST['nombre']) && !empty($_POST['fecha_nacimiento']) && !empty($_POST['email'])) {
-
 
 		$nom = $_POST['nombre'];
 		$mail = $_POST['email'];
@@ -21,11 +19,11 @@
 		$stmt->execute();
 		$stmt->close();
 
+		$_SESSION['user_id'] = $_POST['nombre'];
+
 		//echo "<script>alert('Alta de usuario correcta');</script>";
 
-		header("Location: indice.php");
-
-
+		header("Location: game.php?usuario=$nom");
 	}
 	else
 	{
@@ -33,9 +31,6 @@
 		{
 			echo "<script>alert('Error, el nombre, el email y la fecha de nacimiento son obligatorios');</script>";
 		}
-
-	
-		
 	}
 
 ?>
