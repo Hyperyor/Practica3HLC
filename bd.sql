@@ -7,3 +7,13 @@ CREATE TABLE usuario (
 	derrotas INT,
     PRIMARY KEY (email)   
 );
+
+create table palabras
+(
+    palabra varchar(50) not null
+);
+
+insert into palabras values('primo');
+insert into palabras values('ejemplo');
+insert into palabras values('programacion');
+insert into palabras values('dormir');

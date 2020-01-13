@@ -14,19 +14,11 @@
     <!--<link rel="stylesheet" href="assets/css/style.css"> -->
   </head>
   <body>
+ 
+    <h1>Please Login or SignUp</h1>
 
-    <?php if(isset($_SESSION['user_id'])): ?>
-      <br> Welcome. <?= $_SESSION['user_id']; ?>
-      <br>You are Successfully Logged In
-      <a href="logout.php">
-        Logout
-      </a>
-
-    <?php else: ?>
-      <h1>Please Login or SignUp</h1>
-
-      <a href="signup.php">SignUp</a>
-    <?php endif; ?>
+    <a href="signup.php">SignUp</a>
+    
 
     <h1>Jugadores:</h1>
 
@@ -39,7 +31,7 @@
 
           $nombre = $row["nombre"];
 
-          echo "nombre: <a href=\"game.php?usuario=$nombre\">". $nombre . "</a>" . "- email: ". $row["email"] . "<br>";
+          echo "nombre: <a href=\"iniciarPartida.php?usuario=$nombre\">". $nombre . "</a>" . "- email: ". $row["email"] . "<br>";
         }
       } else {
             echo "0 results";

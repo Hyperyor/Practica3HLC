@@ -19,11 +19,11 @@
 		$stmt->execute();
 		$stmt->close();
 
-		$_SESSION['user_id'] = $_POST['nombre'];
+		//$_SESSION['user_id'] = $_POST['nombre'];
 
 		//echo "<script>alert('Alta de usuario correcta');</script>";
 
-		header("Location: game.php?usuario=$nom");
+		header("Location: indice.php");
 	}
 	else
 	{
