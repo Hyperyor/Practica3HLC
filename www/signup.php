@@ -5,31 +5,65 @@
 
 	if (!empty($_POST['nombre']) && !empty($_POST['fecha_nacimiento']) && !empty($_POST['email'])) {
 
-		$nom = $_POST['nombre'];
-		$mail = $_POST['email'];
-		$ape = $_POST['apellido'];
-		$fec = $_POST['fecha_nacimiento'];
-		$vic = 0;
-		$der = 0;
+		if(!existe_email($_POST['email']))
+		{
 
-		$query = "INSERT INTO usuario (nombre, apellido, email, fecha_nacimiento, victorias, derrotas) VALUES (?, ?, ?, ?, ?, ?)";
+		
+			$nom = $_POST['nombre'];
+			$mail = $_POST['email'];
+			$ape = $_POST['apellido'];
+			$fec = $_POST['fecha_nacimiento'];
+			$vic = 0;
+			$der = 0;
 
-		$stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
-		$stmt->bind_param('ssssii', $nom, $ape, $mail, $fec, $vic, $der);
-		$stmt->execute();
-		$stmt->close();
+			$query = "INSERT INTO usuario (nombre, apellido, email, fecha_nacimiento, victorias, derrotas) VALUES (?, ?, ?, ?, ?, ?)";
 
-		//$_SESSION['user_id'] = $_POST['nombre'];
+			$stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
+			$stmt->bind_param('ssssii', $nom, $ape, $mail, $fec, $vic, $der);
+			$stmt->execute();
+			$stmt->close();
 
-		//echo "<script>alert('Alta de usuario correcta');</script>";
+			//$_SESSION['user_id'] = $_POST['nombre'];
 
-		header("Location: indice.php");
+			//echo "<script>alert('Alta de usuario correcta');</script>";
+
+			header("Location: indice.php");
+		}
+		else
+		{
+			echo "<script>alert('Error, email ya en uso');</script>";
+		}
+
 	}
 	else
 	{
 		if(isset($_POST['envio']))
 		{
 			echo "<script>alert('Error, el nombre, el email y la fecha de nacimiento son obligatorios');</script>";
+		}
+	}
+
+	function existe_email($email)
+	{
+		require 'database.php';
+		$query = "select * from usuario where email = ? ;";
+		$stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
+		$stmt->bind_param('s', $email);
+		$stmt->execute();
+		$datos = $stmt->get_result();
+		$stmt->close();
+
+		$cantidad = $datos->num_rows;
+
+		
+		
+		if($cantidad != 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 
