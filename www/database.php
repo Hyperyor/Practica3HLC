@@ -12,7 +12,7 @@
   }*/
 
   //$servidor="172.19.0.2";
-  $servidor= "172.19.0.2"; // LEO
+  $servidor= "172.22.0.2"; // LEO
   $usuario="root";
   $pass="1234";
   $base_datos="db";

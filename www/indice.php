@@ -70,7 +70,7 @@
                 echo "<tr> <th><a href=\"iniciarPartida.php?email=$em\">". $nombre . "</a></th> <th>". $apellido . "</th> <th>" . get_format($diff) . "</th><tr>";
               }
             } else {
-                echo "0 results";
+                //echo "0 results";
             }
             
             $conexion->close();
