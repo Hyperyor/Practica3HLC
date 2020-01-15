@@ -68,32 +68,61 @@
 	}
 
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>SignUp</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!--<link rel="stylesheet" href="assets/css/style.css"> -->
+	<link rel="shortcut icon" href="assets/imagenes/iconoPag.png" />
+	<link rel="stylesheet" href="assets/css/indice.css">
+	<link rel="stylesheet" href="assets/css/signup.css">
   </head>
   <body>
 
-	<a href="indice.php">Volver al inicio</a>
+  	<nav class="menu">
 
-    <h1>SignUp</h1>
+      <ul class="desplegable">
+        <li>
+          <a href="#" class="game">
+            <img src="assets/imagenes/iconoGame.png" alt="Game" height="40" width="40">
+          </a>
 
-    <form action="signup.php" method="POST" >
-	  <p>Nombre</p>
-      <input name="nombre" type="text" placeholder="Introduzca su nombre" value=<? echo '"' . $_POST['nombre'] . '"' ?>>
-	  <p>Apellido</p>
-      <input name="apellido" type="text" placeholder="Introduzca su apellido" value=<? echo '"' . $_POST['apellido'] . '"' ?>>
-	  <p>Email</p>
-      <input name="email" type="email" placeholder="Introduzca su email" value=<? echo '"' . $_POST['email'] . '"' ?>>
-      <p>Fecha de nacimiento</p>
-	  <input name="fecha_nacimiento" type="date" value=<? echo '"' . $_POST['fecha_nacimiento'] . '"' ?>/>
-						
-      <input name="envio" type="submit" value="Submit">
-    </form>
+          <ul class="subMenuG">
+		  	<li><a href="indice.php">Home</a></li>
+            <li><a href="signup.php">SignUp</a></li>
+            <li><a href="resultado.php">Status</a></li>
+          </ul>
+        </li>
+      </ul>
 
+      <h3>Hangman Game</h3>
+    
+	</nav>
+
+	<main class="cuerpo">
+		
+		<form action="signup.php" method="POST" class="registro">
+
+			<fieldset id="bloqueDatos">
+				<legend>Datos de Registro</legend>
+
+				<label>Nombre</label>
+				<input name="nombre" type="text" placeholder="Introduzca su nombre" value=<? echo '"' . $_POST['nombre'] . '"' ?>>
+				
+				<label>Apellido</label>
+				<input name="apellido" type="text" placeholder="Introduzca su apellido" value=<? echo '"' . $_POST['apellido'] . '"' ?>>
+				
+				<label>Email</label>
+				<input name="email" type="email" placeholder="Introduzca su email" value=<? echo '"' . $_POST['email'] . '"' ?>>
+				
+				<label>Fecha de nacimiento</label>
+				<input name="fecha_nacimiento" type="date" value=<? echo '"' . $_POST['fecha_nacimiento'] . '"' ?>/>
+
+				<button class="botonRegistrar" type="submit" value="Crear cuenta" onClick="validarDatos()">Registrarse</button>
+			</fieldset>
+		</form>
+	</main>
   </body>
 </html>

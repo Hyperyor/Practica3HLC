@@ -1,0 +1,57 @@
+.cuerpo{
+    display: flex;
+    flex-direction: column;
+}
+
+.statJugador{
+    display: block;
+    height: 200px;
+}
+
+#imagenes{
+    margin-top: 5%;
+    position: relative;
+    left: 45%;
+    width: 50%;
+    clear: both;
+}
+
+#imagenes figure{
+    margin: 0px;
+}
+
+#palabraSecreta{
+    text-shadow: rgba(250, 6, 6, 0.863) 1px 1px;
+}
+
+#palabraSecreta, #teclado{
+    font-size: 3vw;
+    margin-top: 2%;
+    text-align: center;
+    clear: both;
+}
+
+.tablaPlayers{
+    left: 26%;
+}
+
+#teclado{
+    position: relative;
+    left: 25%;
+    background-image: url(https://images.alphacoders.com/946/946521.jpg);
+	color: rgb(10, 10, 10);
+	box-shadow: 5px 10px 18px #888888;
+	border: 2px solid rgba(221, 221, 221, 0.603);
+    border-radius: 4px;
+    width: 50%;
+    margin-bottom: 2%;
+}
+
+#teclado a{
+    text-shadow: rgba(250, 6, 6, 0.863) 1px 1px;
+}
+
+#teclado a:hover{
+    background-color:  rgba(250, 6, 6, 0.212);
+    border-radius: 4px;
+}

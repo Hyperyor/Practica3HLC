@@ -1,0 +1,67 @@
+.registro{
+    position: relative;
+    left: 25%;
+	padding: 3%;
+	height: auto;
+	width: 50%;
+}
+
+fieldset{
+	background-color: white;
+	color: rgb(10, 10, 10);
+	font-size: 3vh;
+	padding: 3%;
+	box-shadow: 5px 10px 18px #888888;
+	margin-bottom: 5%;
+	border: none;
+	border-radius: 4px;
+}
+
+#bloqueDatos label{
+    font-size: 2.5vh;
+    color: rgba(0, 0, 255, 0.726);
+}
+
+#bloqueDatos input[type=text], input[type=email], input[type=date], select{
+	color: #888888;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	margin-bottom: 25px;
+	display: inline-block;
+	border: none;
+	border-bottom: 2px solid #ddd;
+	border-radius: 4px;
+	box-shadow: 0 8px 6px -6px #888888;
+}
+
+#bloqueDatos input:hover{
+	background-color: rgba(71, 71, 71, 0.096);
+}
+
+#bloqueDatos input:focus{
+	background-color: #ddd;;
+	border-bottom: 3px solid rgba(8, 8, 8, 0.445);
+}
+
+#bloqueDatos input:focus:invalid{
+	color: red;
+	border-bottom: 3px solid rgba(255, 0, 0, 0.445);
+}
+
+.botonRegistrar{
+	position: relative;
+	left: 80%;
+	padding: 1%;
+	background-color: rgba(0, 0, 0, 0.829);
+	border: 2px solid rgba(0, 0, 0, 0.747);
+	border-radius: 4px;
+	color: rgb(253, 253, 253);
+	font-size: 2vh;
+	text-shadow: rgb(122, 122, 122);
+	box-shadow: 5px 10px 18px #888888;
+}
+
+.botonRegistrar:hover{
+	background-color: rgba(0, 0, 0, 0.664);
+}

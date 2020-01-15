@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+a:link, a:visited {
+    color: rgba(255, 255, 255, 0.973);
+    font-size: 3vh;
+    text-decoration: none;
+    text-shadow: rgba(0, 0, 0, 0.884) 1px 1px;	
+}
+
+body{
+    margin: 0px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 100vw;
+    font-size: 3vh;
+    text-shadow: rgb(255, 255, 255) 1px 1px;
+    overflow-y: auto;
+    background-image: url(https://wallpapercave.com/wp/wp2210516.jpg);
+}
+
+.cuerpo{
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;  
+    clear: both; 
+}
+
+.cuerpo header h1{
+    color: rgba(29, 29, 161, 0.979);
+    text-shadow: rgba(0, 0, 0, 0.884) 1px 1px;	
+    margin-bottom: 2%;
+    margin-left: 15%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.918);
+	border-radius: 4px;
+    box-shadow: 0 8px 6px -6px rgb(52, 49, 240);
+    width: 20%;
+}
+
+.desplegable{
+    display: flex;
+    padding: 0%;
+    margin: 0%;
+    list-style: none;
+    align-content: center;
+}
+
+.game{
+    display: block;
+    text-align: center;
+    height: auto;
+    width: auto;
+}
+
+.game img{
+    margin: 5px;
+}
+
+.game:hover {
+    background-color: rgba(185, 185, 185, 0.322);
+    border-radius: 20px;
+}
+
+.game:hover + ul, .subMenuG:hover{
+    display: block;
+    position: absolute;
+}
+
+.menu{
+    align-items: center;
+    background-image: url(https://images.alphacoders.com/946/946521.jpg);
+    border-bottom: 0.5px solid;
+    box-shadow: 0 8px 6px -6px #888888;
+    clear: both;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0px;
+    width: 100%; 
+    z-index: 10;
+}
+
+.menu h3{
+    color: white;
+    font-size: 30px;
+    margin: 5px auto;
+    text-shadow: black 1px 1px;
+}
+
+.subMenuG {
+    text-align: start;
+    display: none;
+    padding: 0%;
+    list-style: none;
+    width: 20%;
+}
+
+.subMenuG a{
+    margin: 5%;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 100vw;
+    font-size: 3vh;
+    text-shadow: rgb(4, 0, 255) 1px 1px;
+}
+
+.subMenuG li{
+    display: block;
+    position: relative;
+    background-image: url(https://images.alphacoders.com/946/946521.jpg);
+    border: 0.5px solid rgba(243, 242, 242, 0.185);
+    border-radius: .25rem;
+}
+
+.subMenuG li:hover{
+    left: 10px;
+}
+
+.tablaPlayers{
+    text-align: left;
+    position: absolute;
+    left: 25%;
+    width: 50%;
+}
+
+#cabeceraTabla{
+    color: rgba(29, 29, 161, 0.89);
+    text-shadow: rgba(0, 0, 0, 0.884) 1px 1px;	
+}
+
+#cabeceraTabla:hover{
+    background-color: rgba(4, 0, 255, 0);;
+}
+
+.tablaPlayers tr{
+    color: rgba(0, 0, 0, 0.774);
+	border-bottom: 2px solid rgba(255, 255, 255, 0.918);
+	border-radius: 4px;
+	box-shadow: 0 8px 6px -6px rgb(52, 49, 240);
+}
+
+.tablaPlayers tr:hover{
+    background-color: rgba(4, 0, 255, 0.267);
+}

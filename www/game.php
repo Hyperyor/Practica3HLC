@@ -4,8 +4,6 @@
     session_start();
 
     $user = $_SESSION['user_id'];
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -14,146 +12,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="assets/imagenes/iconoPag.png" />
+    <link rel="stylesheet" href="assets/css/indice.css">
+    <link rel="stylesheet" href="assets/css/game.css">
     <title>GAME</title>
 </head>
 <body>
-    <a href="logout.php">Salir</a>
+    <nav class="menu">
 
-    <section id="datosUsuario">
-        <?php
-            echo '<p>Nombre</p>';
-            echo '<p>' . $_SESSION["nombreUsuario"] . '</p>';
-            echo '<p>Apellido</p>';
-            echo '<p>' . $_SESSION["apellidoUsuario"] . '</p>';
-            echo '<p>Fecha nacimiento</p>';
-            echo '<p>' . $_SESSION["fechaNacUsuario"] . '</p>';
-            echo '<p>Victorias</p>';
-            echo '<p>' . $_SESSION["victoriasUsu"] . '</p>';
-            echo '<p>Derrotas</p>';
-            echo '<p>' . $_SESSION["derrotasUsu"] . '</p>';
-            echo '<p>Email</p>';
-            echo '<p>' .$_SESSION["user_id"] . '</p>';
-        ?>
-    </section>
+        <ul class="desplegable">
+            <li>
+                <a href="#" class="game">
+                <img src="assets/imagenes/iconoGame.png" alt="Game" height="40" width="40">
+                </a>
 
-    <figure id="imagenes">
-        <img height="100" width="50" src="assets/imagenes/<?php echo $_SESSION['fallos']; ?>.png" />
-    </figure>
+                <ul class="subMenuG">
+                    <li><a href="indice.php">Home</a></li>
+                <li><a href="signup.php">SignUp</a></li>
+                <li><a href="resultado.php">Status</a></li>
+                </ul>
+            </li>
+        </ul>
 
-    <section id= "palabraSecreta">
-        <?php 
-            $palabra = $_SESSION['palabraVacia'];
+        <h3>Hangman Game</h3>
 
-            //recorre la palabra oculta y va mostrando letra por letra
-            for($i = 0; $i < strlen($_SESSION['palabraVacia']); $i++)
-            {
-                echo $palabra[$i];
-                echo " ";
-            }
-        ?>
+    </nav>
 
-    </section>
+    <main class="cuerpo">
 
-    <section id= "teclado">
-        <?php
+        <article class=statJugador>
 
-        if(!$_SESSION['derrota'] && !$_SESSION['victoria'])
-        {
-        
-            echo '<a href="gameController.php?letra=q">Q</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=w">W</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=e">E</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=r">R</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=t">T</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=y">Y</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=u">U</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=i">I</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=o">O</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=p">P</a>';
+            <header><h1>Jugador:</h1></header>
 
-            echo '<br/>';
+            <table class="tablaPlayers">
 
-            echo '<a href="gameController.php?letra=a">A</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=s">S</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=d">D</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=f">F</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=g">G</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=h">H</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=j">J</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=k">K</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=l">L</a>';
-            
-            echo '<br/>';
+                <tr id="cabeceraTabla"> 
+                    <th>Nombre</th> 
+                    <th>Apellido</th> 
+                    <th>Victorias</th>
+                    <th>Derrotas</th>
+                <tr>
 
-            echo '<a href="gameController.php?letra=z">Z</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=x">X</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=c">C</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=v">V</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=b">B</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=n">N</a>';
-            echo ' ';
-            echo '<a href="gameController.php?letra=m">M</a>';
-        }
-		else //si pierde o gana se deja de mostrar el teclado
-		{
-            if($_SESSION['derrota'])
-            {
+                <?php
+                    echo "<tr> <th>" . $_SESSION["nombreUsuario"] . "</th> <th>" . $_SESSION["apellidoUsuario"] . "</th> <th>" . $_SESSION["victoriasUsu"] . "</th> <th>" . $_SESSION["derrotasUsu"] . "</th><tr>";                 
+                ?>
+            </table>
 
-                
+        </article>
 
-                $query = "UPDATE usuario set derrotas = ? where email = ?";
+        <article>
+            <header id="imagenes">
+                <figure>
+                    <img height="400" width="200" src="assets/imagenes/<?php echo $_SESSION['fallos']; ?>.png" />
+                </figure>
+            </header>
 
-                $stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
-                $stmt->bind_param('is', $_SESSION["derrotasUsu"], $_SESSION["user_id"]);
-                $stmt->execute();
-                $stmt->close();
+            <section id= "palabraSecreta">
+                <?php 
+                    $palabra = $_SESSION['palabraVacia'];
 
-                $palabra = $_SESSION['palabraSecreta'];
-                echo "<script>alert('Ha perdido, la palabra era $palabra'); </script>";
-            }
-            else
-            {
-                if($_SESSION['victoria'])
+                    //recorre la palabra oculta y va mostrando letra por letra
+                    for($i = 0; $i < strlen($_SESSION['palabraVacia']); $i++)
+                    {
+                        echo $palabra[$i];
+                        echo " ";
+                    }
+                ?>
+
+            </section>
+
+            <section id= "teclado">
+                <?php
+
+                if(!$_SESSION['derrota'] && !$_SESSION['victoria'])
                 {
+                
+                    echo '<a href="gameController.php?letra=q">Q</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=w">W</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=e">E</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=r">R</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=t">T</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=y">Y</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=u">U</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=i">I</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=o">O</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=p">P</a>';
+
+                    echo '<br/>';
+
+                    echo '<a href="gameController.php?letra=a">A</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=s">S</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=d">D</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=f">F</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=g">G</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=h">H</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=j">J</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=k">K</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=l">L</a>';
                     
+                    echo '<br/>';
 
-                    $query = "UPDATE usuario set victorias = ? where email = ?";
-
-                    $stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
-                    $stmt->bind_param('is', $_SESSION["victoriasUsu"], $_SESSION["user_id"]);
-                    $stmt->execute();
-                    $stmt->close();
-
-                    echo "<script>alert('Enhorabuena, ha ganado!');</script>";
+                    echo '<a href="gameController.php?letra=z">Z</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=x">X</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=c">C</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=v">V</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=b">B</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=n">N</a>';
+                    echo ' ';
+                    echo '<a href="gameController.php?letra=m">M</a>';
                 }
-            }
-		}
+                else //si pierde o gana se deja de mostrar el teclado
+                {
+                    if($_SESSION['derrota'])
+                    {
+
+                        
+
+                        $query = "UPDATE usuario set derrotas = ? where email = ?";
+
+                        $stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
+                        $stmt->bind_param('is', $_SESSION["derrotasUsu"], $_SESSION["user_id"]);
+                        $stmt->execute();
+                        $stmt->close();
+
+                        $palabra = $_SESSION['palabraSecreta'];
+                        echo "<script>alert('Ha perdido, la palabra era $palabra'); </script>";
+                    }
+                    else
+                    {
+                        if($_SESSION['victoria'])
+                        {
+                            
+
+                            $query = "UPDATE usuario set victorias = ? where email = ?";
+
+                            $stmt = mysqli_prepare($conexion, $query) or die(mysqli_error($conexion));
+                            $stmt->bind_param('is', $_SESSION["victoriasUsu"], $_SESSION["user_id"]);
+                            $stmt->execute();
+                            $stmt->close();
+
+                            echo "<script>alert('Enhorabuena, ha ganado!');</script>";
+                        }
+                    }
+                }
 
 
-        ?>
-    </section>
-    
+                ?>
+            </section>
+
+        </article>
+
+    </main>
 </body>
 </html>
