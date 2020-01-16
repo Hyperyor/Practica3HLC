@@ -3,10 +3,11 @@
     
     session_start();
 
-    if(!$_SESSION['victoria'])
-    {
-        $_SESSION['derrota'] = true;
-    }
+    if(!$_SESSION['victoria'] && !$_SESSION['derrota'] )
+  {
+    $_SESSION["derrotasUsu"] = $_SESSION["derrotasUsu"] +1;
+    $_SESSION['derrota'] = true;
+  }
 ?>
 
 <!DOCTYPE html>
