@@ -1,3 +1,14 @@
+<?php
+    require 'database.php';
+    
+    session_start();
+
+    if(!$_SESSION['victoria'])
+    {
+        $_SESSION['derrota'] = true;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

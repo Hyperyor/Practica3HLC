@@ -30,6 +30,7 @@
                     <li><a href="indice.php">Home</a></li>
                 <li><a href="signup.php">SignUp</a></li>
                 <li><a href="resultado.php">Status</a></li>
+                <li><a href="logout.php">Salir</a></li>
                 </ul>
             </li>
         </ul>

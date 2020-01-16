@@ -3,6 +3,11 @@
 
 	session_start();
 
+	if(!$_SESSION['victoria'])
+	{
+			$_SESSION['derrota'] = true;
+	}
+
 	if (!empty($_POST['nombre']) && !empty($_POST['fecha_nacimiento']) && !empty($_POST['email'])) {
 
 		if(!existe_email($_POST['email']))
